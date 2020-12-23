@@ -1,0 +1,34 @@
+* {
+    background: rgb(25, 25, 25);
+    color: white;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+#GhostLogo {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#GhostText {
+    text-align: center;
+}
+
+#description {
+    text-align: center;
+    position: relative;
+    size: 50%;
+}
+
+#copyScriptButton {
+    color: rgb(0, 0, 0);
+    font-weight: bolder;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    border-style: none;
+    border-radius: 10px;
+    background: rgb(103, 255, 83);
+    width: 400px;
+    height: 25px;
+}
