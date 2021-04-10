@@ -1,6 +1,6 @@
 (function() {
 
-const script = 'loadstring(game:HttpGet(\'cdn.websitename.com/script.lua\'))()';
+const script = 'https://ghosthub.live/script.lua\'))()';
 
 const copyButton = document.getElementById('copyScriptButton')
 
