@@ -1,1 +1,1 @@
-game.Players.LocalPlayer:Kick('It\'s been loaded!')
+print('Lumber Tycoon!')
