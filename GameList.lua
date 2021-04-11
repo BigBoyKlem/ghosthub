@@ -1,3 +1,3 @@
-local gameList = {
-    ['13822889'] = 'Lumber Tycoon 2'
+return {
+    ['13822889'] = 'LumberTycoon2'
 }
