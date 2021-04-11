@@ -1,3 +1,3 @@
 {
-    ['13822889'] = 'Lumber Tycoon 2'
+    ['13822889'] = 'LumberTycoon2'
 }
