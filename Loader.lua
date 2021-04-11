@@ -1,0 +1,1 @@
+local gameList = loadstring(game:HttpGet("",true))()
