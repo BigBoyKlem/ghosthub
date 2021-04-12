@@ -1,5 +1,11 @@
+-- Auto Cash Script
+-- while wait() do
+--     game.ReplicatedStorage.RemoteEvent:FireServer("RequestCollectCash") 
+-- end
+
 local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/bloodball/-back-ups-for-libs/main/wally2", true))()
 
+local mainWindow = library:CreateWindow("Mall Tycoon")
 local playerWindow = library:CreateWindow("Player")
 local teleportWindow = library:CreateWindow("Teleport")
 local miscWindow = library:CreateWindow("Misc")
@@ -12,6 +18,17 @@ for i,v in pairs(game.Players:GetPlayers())do
         table.insert(playerlist,v.Name)
     end
 end
+
+mainWindow:Toggle("Auto Cash Collect", {flag = "autoCashCollect"},
+spawn(    
+    function()
+        while wait() do
+            if (mainWindow.flags.autoCashCollect) then
+                game.ReplicatedStorage.RemoteEvent:FireServer("RequestCollectCash") 
+            end
+        end
+    end)
+)
 
 playerWindow:Slider("Walk Speed", {flag = "walkSpeedSlider", min = 16, max = 500})
 playerWindow:Slider("Jump Power", {flag = "jumpPowerSlider", min = 50, max = 500})
