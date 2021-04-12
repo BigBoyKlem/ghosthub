@@ -1,3 +1,3 @@
 return {
-    ['13822889'] = 'LumberTycoon2'
+    ['537413528'] = 'BuildABoat',
 }
