@@ -2,4 +2,6 @@ local gameList = loadstring(game:HttpGet('https://raw.githubusercontent.com/BigB
 
 if gameList[tostring(game.PlaceId)] then
     loadstring(game:HttpGet('https://raw.githubusercontent.com/BigBoyKlem/GhostHub/master/' .. 'Games/' .. gameList[tostring(game.PlaceId)] .. '.lua', true))()
+else
+    loadstring(game:HttpGet('https://raw.githubusercontent.com/BigBoyKlem/GhostHub/master/Games/Universal.lua', true))()
 end
