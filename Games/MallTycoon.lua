@@ -73,18 +73,6 @@ miscWindow:Button("Get Discord Link", function()
     setclipboard(loadstring(game:HttpGet('https://raw.githubusercontent.com/BigBoyKlem/GhostHub/master/DiscordLink.lua',true))())
 end)
 
-while wait() do
-    pcall(function()
-
-        -- Walk Speed / Jump Power
-        game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = playerWindow.flags.walkSpeedSlider
-        game.Players.LocalPlayer.Character.Humanoid.JumpPower = playerWindow.flags.jumpPowerSlider
-
-        -- FOV
-        game.Workspace.CurrentCamera.FieldOfView = playerWindow.flags.fovSlider
-    end)
-end
-
 game.Players.PlayerAdded:Connect(function(player)
     local name = player.Name
     table.insert(playerlist,name)
@@ -98,5 +86,17 @@ game.Players.PlayerRemoving:Connect(function(player)
             table.remove(playerlist,i)
         end
     end
-    drop:Refresh(playerlist)
+    playerDropDown:Refresh(playerlist)
 end)
+
+while wait() do
+    pcall(function()
+
+        -- Walk Speed / Jump Power
+        game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = playerWindow.flags.walkSpeedSlider
+        game.Players.LocalPlayer.Character.Humanoid.JumpPower = playerWindow.flags.jumpPowerSlider
+
+        -- FOV
+        game.Workspace.CurrentCamera.FieldOfView = playerWindow.flags.fovSlider
+    end)
+end

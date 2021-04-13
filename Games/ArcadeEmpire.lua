@@ -97,6 +97,22 @@ miscWindow:Button("Get Discord Link", function()
     setclipboard(loadstring(game:HttpGet('https://raw.githubusercontent.com/BigBoyKlem/GhostHub/master/DiscordLink.lua',true))())
 end)
 
+game.Players.PlayerAdded:Connect(function(player)
+    local name = player.Name
+    table.insert(playerlist,name)
+    playerDropDown:Refresh(playerlist)
+end)
+
+game.Players.PlayerRemoving:Connect(function(player)
+    local name = player.Name
+    for i,v in pairs(playerlist)do
+        if v == name then  
+            table.remove(playerlist,i)
+        end
+    end
+    playerDropDown:Refresh(playerlist)
+end)
+
 while wait() do
     pcall(function()
 
@@ -151,19 +167,3 @@ while wait() do
         end
     end)
 end
-
-game.Players.PlayerAdded:Connect(function(player)
-    local name = player.Name
-    table.insert(playerlist,name)
-    playerDropDown:Refresh(playerlist)
-end)
-
-game.Players.PlayerRemoving:Connect(function(player)
-    local name = player.Name
-    for i,v in pairs(playerlist)do
-        if v == name then  
-            table.remove(playerlist,i)
-        end
-    end
-    drop:Refresh(playerlist)
-end)
