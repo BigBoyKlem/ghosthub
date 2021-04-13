@@ -45,18 +45,7 @@ playerWindow:Slider("Walk Speed", {flag = "walkSpeedSlider", min = 16, max = 500
 playerWindow:Slider("Jump Power", {flag = "jumpPowerSlider", min = 50, max = 500})
 playerWindow:Slider("FOV", {flag = "fovSlider", min = 70, max = 120})
 
-playerWindow:Toggle("Anti AFK", {flag = "antiAFKToggle"},
-spawn(
-    function()
-        game:GetService("Players").LocalPlayer.Idled:Connect(function()
-            if (playerWindow.flags.antiAFKToggle) then
-                vu:Button2Down(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
-                wait(1)
-                vu:Button2Up(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
-            end
-         end)
-    end)
-)
+playerWindow:Toggle("Anti AFK", {flag = "antiAFKToggle"})
 
 playerWindow:Bind("No Clip", {flag = "noClipBind", kbonly = true, default = Enum.KeyCode.E}, function()
     
@@ -136,6 +125,14 @@ while wait() do
                 end
             end
 
+            if (playerWindow.flags.antiAFKToggle) then
+                local vu = game:GetService("VirtualUser")
+                game:GetService("Players").LocalPlayer.Idled:Connect(function()
+                    vu:Button2Down(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
+                    wait(1)
+                    vu:Button2Up(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
+                 end)
+            end
         end
     )
 end
