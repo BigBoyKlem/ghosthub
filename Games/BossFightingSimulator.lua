@@ -1,17 +1,35 @@
 local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/bloodball/-back-ups-for-libs/main/wally2", true))()
 
+local AutoFarmWindow = library:CreateWindow("Auto Farm")
+local EggsWindow = library:CreateWindow("Eggs")
 local playerWindow = library:CreateWindow("Player")
 local teleportWindow = library:CreateWindow("Teleport")
 local miscWindow = library:CreateWindow("Misc")
 
 local noClipToggled = false
 local playerlist = {}
+local eggList = {}
 
 for i,v in pairs(game.Players:GetPlayers())do
     if v ~= game.Players.LocalPlayer then
         table.insert(playerlist,v.Name)
     end
 end
+
+for i,v in pairs(game.Workspace.Eggs:GetChildren()) do
+    table.insert(eggList,v.Name)
+end
+
+AutoFarmWindow:Toggle("Enable Auto Farm", {flag = 'autoFarmToggle'})
+AutoFarmWindow:Toggle("Auto Sell", {flag = 'autoSellToggle'})
+
+EggsWindow:Dropdown("Egg Type", {flag = "eggTypeDropdown", list = eggList}, function(value)
+
+end)
+
+EggsWindow:Button("Open Egg", function()
+    game.ReplicatedStorage.Remotes.EggPurchase:InvokeServer(EggsWindow.flags.eggTypeDropdown)
+end)
 
 playerWindow:Slider("Walk Speed", {flag = "walkSpeedSlider", min = 16, max = 500})
 playerWindow:Slider("Jump Power", {flag = "jumpPowerSlider", min = 50, max = 500})
@@ -61,22 +79,37 @@ miscWindow:Button("Get Discord Link", function()
 end)
 
 while wait() do
-    pcall(function()
+    spawn(
+        function()
+            game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = playerWindow.flags.walkSpeedSlider
+            game.Players.LocalPlayer.Character.Humanoid.JumpPower = playerWindow.flags.jumpPowerSlider
 
-        -- Walk Speed / Jump Power
-        game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = playerWindow.flags.walkSpeedSlider
-        game.Players.LocalPlayer.Character.Humanoid.JumpPower = playerWindow.flags.jumpPowerSlider
+            game.Workspace.CurrentCamera.FieldOfView = playerWindow.flags.fovSlider
 
-        -- FOV
-        game.Workspace.CurrentCamera.FieldOfView = playerWindow.flags.fovSlider
+            if (AutoFarmWindow.flags.autoSellToggle) then
+                game.ReplicatedStorage.Remotes.SellPower:InvokeServer()
+            end
 
-        if (teleportWindow.flags.annoyPlayerToggle) then
-            local playerPart = game.Players.LocalPlayer.Character.PrimaryPart
-            local targetPart = game.Players[teleportWindow.flags.playerDropDown].Character.PrimaryPart
-        
-            playerPart.CFrame = targetPart.CFrame
+            if (AutoFarmWindow.flags.autoFarmToggle) then
+
+                for i,v in pairs(game.Players.LocalPlayer.Weapons:GetChildren()) do
+                    if (game.Players.LocalPlayer.Character:FindFirstChild(v.Name)) then
+                        game.Players.LocalPlayer.Character:FindFirstChild(v.Name):Activate()
+                    elseif(game.Players.LocalPlayer.Backpack:FindFirstChild(v.Name)) then
+                        game.Players.LocalPlayer.Character.Humanoid:EquipTool(game.Players.LocalPlayer.Backpack[v.Name])
+                    end
+                end
+            end
+
+            if (teleportWindow.flags.annoyPlayerToggle) then
+                local playerPart = game.Players.LocalPlayer.Character.PrimaryPart
+                local targetPart = game.Players[teleportWindow.flags.playerDropDown].Character.PrimaryPart
+            
+                playerPart.CFrame = targetPart.CFrame
+            end
+
         end
-    end)
+    )
 end
 
 game.Players.PlayerAdded:Connect(function(player)
