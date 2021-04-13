@@ -111,10 +111,12 @@ while wait() do
             end
 
             if (teleportWindow.flags.annoyPlayerToggle) then
-                local playerPart = game.Players.LocalPlayer.Character.PrimaryPart
-                local targetPart = game.Players[teleportWindow.flags.playerDropDown].Character.PrimaryPart
-            
-                playerPart.CFrame = targetPart.CFrame
+                if (game.Players[teleportWindow.flags.playerDropDown].Character ~= nil and game.Players.LocalPlayer.Character ~= nil) then
+                    local playerPart = game.Players.LocalPlayer.Character.PrimaryPart
+                    local targetPart = game.Players[teleportWindow.flags.playerDropDown].Character.PrimaryPart
+                
+                    playerPart.CFrame = targetPart.CFrame
+                end
             end
 
         end
