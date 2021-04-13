@@ -2,6 +2,7 @@ local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/blood
 
 local AutoFarmWindow = library:CreateWindow("Auto Farm")
 local EggsWindow = library:CreateWindow("Eggs")
+local ShopsWindow = library:CreateWindow("Shops")
 local playerWindow = library:CreateWindow("Player")
 local teleportWindow = library:CreateWindow("Teleport")
 local miscWindow = library:CreateWindow("Misc")
@@ -29,6 +30,14 @@ end)
 
 EggsWindow:Button("Open Egg", function()
     game.ReplicatedStorage.Remotes.EggPurchase:InvokeServer(EggsWindow.flags.eggTypeDropdown)
+end)
+
+ShopsWindow:Button("Open Shop", function()
+    game.ReplicatedStorage.Remotes.OpenShop:Fire()
+end)
+
+ShopsWindow:Button("Open Rune Shop", function()
+    game.ReplicatedStorage.Remotes.OpenRuneShop:Fire()
 end)
 
 playerWindow:Slider("Walk Speed", {flag = "walkSpeedSlider", min = 16, max = 500})
