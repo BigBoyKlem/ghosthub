@@ -1,6 +1,6 @@
 local Library = {}
 
-function CreateUI(name)
+function Library:CreateUI(name)
 	local bef540b4d62e4283b6f19d9308b89ba9 = Instance.new("ScreenGui")
 	local Main = Instance.new("Frame")
 	local MainName = Instance.new("TextLabel")
@@ -62,9 +62,9 @@ function CreateUI(name)
 	end
 	coroutine.wrap(WVNSL_fake_script)()
 	
-	local Main = {}
+	local UI = {}
 	
-	function Main:Tab(text)
+	function UI:Tab(text)
 		Tablist.Name = "Tablist"
 		Tablist.Parent = Backdrop
 		Tablist.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
