@@ -5,21 +5,13 @@ function Library:CreateUI(name)
 	local Main = Instance.new("Frame")
 	local MainName = Instance.new("TextLabel")
 	local Backdrop = Instance.new("Frame")
-	local TabButtons = Instance.new("Frame")
 	local UIListLayout = Instance.new("UIListLayout")
+	local TabButtons = Instance.new("Frame")
 	local Tablist = Instance.new("Frame")
 	
 	bef540b4d62e4283b6f19d9308b89ba9.Name = "bef540b4-d62e-4283-b6f1-9d9308b89ba9"
 	bef540b4d62e4283b6f19d9308b89ba9.Parent = game:GetService('CoreGui')
 	bef540b4d62e4283b6f19d9308b89ba9.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
-	
-	Tablist.Name = "Tablist"
-	Tablist.Parent = Backdrop
-	Tablist.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
-	Tablist.BackgroundTransparency = 1.000
-	Tablist.BorderSizePixel = 0
-	Tablist.Position = UDim2.new(0, 0, 0.0949999988, 0)
-	Tablist.Size = UDim2.new(0, 350, 0, 181)
 	
 	Main.Name = "Main"
 	Main.Parent = bef540b4d62e4283b6f19d9308b89ba9
@@ -51,6 +43,14 @@ function Library:CreateUI(name)
 	TabButtons.BorderSizePixel = 0
 	TabButtons.Position = UDim2.new(0, 0, -0.00499999989, 0)
 	TabButtons.Size = UDim2.new(0, 350, 0, 20)
+	
+	Tablist.Name = "Tablist"
+	Tablist.Parent = Backdrop
+	Tablist.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+	Tablist.BackgroundTransparency = 1.000
+	Tablist.BorderSizePixel = 0
+	Tablist.Position = UDim2.new(0, 0, 0.0949999988, 0)
+	Tablist.Size = UDim2.new(0, 350, 0, 181)
 
 	UIListLayout.Parent = TabButtons
 	UIListLayout.FillDirection = Enum.FillDirection.Horizontal
