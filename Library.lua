@@ -7,9 +7,6 @@ function Library:CreateUI(name)
 	local Backdrop = Instance.new("Frame")
 	local TabButtons = Instance.new("Frame")
 	local UIListLayout = Instance.new("UIListLayout")
-	local TabButton = Instance.new("TextButton")
-	local Tablist = Instance.new("Frame")
-	local TestTab = Instance.new("Frame")
 	
 	bef540b4d62e4283b6f19d9308b89ba9.Name = "bef540b4-d62e-4283-b6f1-9d9308b89ba9"
 	bef540b4d62e4283b6f19d9308b89ba9.Parent = game:GetService('CoreGui')
@@ -65,16 +62,21 @@ function Library:CreateUI(name)
 	local UI = {}
 	
 	function UI:Tab(text)
-		Tablist.Name = "Tablist"
-		Tablist.Parent = Backdrop
-		Tablist.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
-		Tablist.BackgroundTransparency = 1.000
-		Tablist.BorderSizePixel = 0
-		Tablist.Position = UDim2.new(0, 0, 0.0949999988, 0)
-		Tablist.Size = UDim2.new(0, 350, 0, 181)
+		
+		local TabButton = Instance.new("TextButton")
+		local TestTab = Instance.new("Frame")
+		local NewTab = Instance.new("Frame")
+		
+		NewTab.Name = "NewTab"
+		NewTab.Parent = Backdrop
+		NewTab.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+		NewTab.BackgroundTransparency = 1.000
+		NewTab.BorderSizePixel = 0
+		NewTab.Position = UDim2.new(0, 0, 0.0949999988, 0)
+		NewTab.Size = UDim2.new(0, 350, 0, 181)
 
 		TestTab.Name = "TestTab"
-		TestTab.Parent = Tablist
+		TestTab.Parent = NewTab
 		TestTab.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
 		TestTab.BackgroundTransparency = 1.000
 		TestTab.BorderSizePixel = 0
