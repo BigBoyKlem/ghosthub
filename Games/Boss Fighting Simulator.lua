@@ -57,6 +57,8 @@ playerWindow:Toggle("Anti AFK", {flag = "antiAFKToggle"}, function(value)
     end
 end)
 
+playerWindow:Toggle("Infinite Jump", {flag = "infiniteJumpToggle"})
+
 playerWindow:Bind("No Clip", {flag = "noClipBind", kbonly = true, default = Enum.KeyCode.E}, function()
     
     noClipToggled = not noClipToggled
@@ -64,14 +66,6 @@ playerWindow:Bind("No Clip", {flag = "noClipBind", kbonly = true, default = Enum
     game:GetService('RunService').Stepped:Connect(function()
         if (noClipToggled) then
             game.Players.LocalPlayer.Character.Humanoid:ChangeState(11)
-        end
-    end)
-end)
-
-playerWindow:Toggle("Infinite Jump", {flag = "infiniteJumpToggle"}, function(value)
-    game:GetService("UserInputService").JumpRequest:Connect(function()
-        if (value) then
-            game:GetService"Players".LocalPlayer.Character:FindFirstChildOfClass'Humanoid':ChangeState("Jumping")
         end
     end)
 end)
@@ -142,6 +136,12 @@ while wait() do
                     playerPart.CFrame = targetPart.CFrame
                 end
             end
+
+            game:GetService("UserInputService").JumpRequest:Connect(function()
+                if (playerWindow.flags.infiniteJumpToggle) then
+                    game:GetService"Players".LocalPlayer.Character:FindFirstChildOfClass'Humanoid':ChangeState("Jumping")
+                end
+            end)
         end
     )
 end

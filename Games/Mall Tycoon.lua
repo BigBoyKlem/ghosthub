@@ -46,13 +46,7 @@ playerWindow:Toggle("Anti AFK", {flag = "antiAFKToggle"}, function(value)
     end
 end)
 
-playerWindow:Toggle("Infinite Jump", {flag = "infiniteJumpToggle"}, function(value)
-    game:GetService("UserInputService").JumpRequest:Connect(function()
-        if (value) then
-            game:GetService"Players".LocalPlayer.Character:FindFirstChildOfClass'Humanoid':ChangeState("Jumping")
-        end
-    end)
-end)
+playerWindow:Toggle("Infinite Jump", {flag = "infiniteJumpToggle"})
 
 playerWindow:Bind("No Clip", {flag = "noClipBind", kbonly = true, default = Enum.KeyCode.E}, function()
     
@@ -105,5 +99,12 @@ while wait() do
 
         -- FOV
         game.Workspace.CurrentCamera.FieldOfView = playerWindow.flags.fovSlider
+
+        
+        game:GetService("UserInputService").JumpRequest:Connect(function()
+            if (playerWindow.flags.infiniteJumpToggle) then
+                game:GetService"Players".LocalPlayer.Character:FindFirstChildOfClass'Humanoid':ChangeState("Jumping")
+            end
+        end)
     end)
 end
