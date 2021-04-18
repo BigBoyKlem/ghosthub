@@ -1,4 +1,4 @@
-local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/BigBoyKlem/GhostHub/master/Library.lua", true))()
+local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/BigBoyKlem/GhostHub/master/ScriptHub/Library.lua", true))()
 
 local AutoFarmWindow = library:CreateWindow("Auto Farm")
 local BuyItemsWindow = library:CreateWindow("Buy Items")
@@ -95,7 +95,7 @@ miscWindow:Button("Rejoin Game", function()
 end)
 
 miscWindow:Button("Get Discord Link", function()
-    setclipboard(loadstring(game:HttpGet('https://raw.githubusercontent.com/BigBoyKlem/GhostHub/master/DiscordLink.lua',true))())
+    setclipboard(loadstring(game:HttpGet('https://raw.githubusercontent.com/BigBoyKlem/GhostHub/master/ScriptHub/DiscordLink.lua',true))())
 end)
 
 game.Players.PlayerAdded:Connect(function(player)

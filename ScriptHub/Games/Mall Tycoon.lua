@@ -1,9 +1,4 @@
--- Auto Cash Script
--- while wait() do
---     game.ReplicatedStorage.RemoteEvent:FireServer("RequestCollectCash") 
--- end
-
-local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/BigBoyKlem/GhostHub/master/Library.lua", true))()
+local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/BigBoyKlem/GhostHub/master/ScriptHub/Library.lua", true))()
 
 local mainWindow = library:CreateWindow("Mall Tycoon")
 local playerWindow = library:CreateWindow("Player")
@@ -71,7 +66,7 @@ miscWindow:Button("Rejoin Game", function()
 end)
 
 miscWindow:Button("Get Discord Link", function()
-    setclipboard(loadstring(game:HttpGet('https://raw.githubusercontent.com/BigBoyKlem/GhostHub/master/DiscordLink.lua',true))())
+    setclipboard(loadstring(game:HttpGet('https://raw.githubusercontent.com/BigBoyKlem/GhostHub/master/ScriptHub/DiscordLink.lua',true))())
 end)
 
 game.Players.PlayerAdded:Connect(function(player)

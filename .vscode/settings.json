@@ -1,7 +1,13 @@
 {
+    "Lua.diagnostics.globals": [
+        "setclipboard",
+        "container"
+    ],
     "Lua.diagnostics.disable": [
-        "undefined-global",
+        "undefined-rbx-member",
+        "trailing-space",
         "missing-module-return",
-        "undefined-rbx-member"
+        "unknown-symbol",
+        "duplicate-index"
     ]
 }

@@ -29,8 +29,8 @@ local defaults; do
     
                     local leave;
                     leave = frame.MouseLeave:connect(function()
-                        input:disconnect();
-                        leave:disconnect();
+                        input:Disconnect();
+                        leave:Disconnect();
                     end)
                 end)
             end

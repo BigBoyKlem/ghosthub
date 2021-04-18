@@ -1,4 +1,4 @@
-local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/BigBoyKlem/GhostHub/master/Library.lua", true))()
+local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/BigBoyKlem/GhostHub/master/ScriptHub/Library.lua", true))()
 
 local playerWindow = library:CreateWindow("Player")
 local teleportWindow = library:CreateWindow("Teleport")
@@ -58,7 +58,7 @@ miscWindow:Button("Rejoin Game", function()
 end)
 
 miscWindow:Button("Get Discord Link", function()
-    setclipboard(loadstring(game:HttpGet('https://raw.githubusercontent.com/BigBoyKlem/GhostHub/master/DiscordLink.lua',true))())
+    setclipboard(loadstring(game:HttpGet('https://raw.githubusercontent.com/BigBoyKlem/GhostHub/master/ScriptHub/DiscordLink.lua',true))())
 end)
 
 game.Players.PlayerAdded:Connect(function(player)
@@ -70,7 +70,7 @@ end)
 game.Players.PlayerRemoving:Connect(function(player)
     local name = player.Name
     for i,v in pairs(playerlist)do
-        if v == name then  
+        if v == name then
             table.remove(playerlist,i)
         end
     end

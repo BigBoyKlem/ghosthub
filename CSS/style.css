@@ -1,0 +1,24 @@
+* {
+    background-color: rgb(20, 20, 20);
+    color: white;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.title {
+    text-align: center;
+    line-height: 10px;
+    top: 40%;
+    left: 45%;
+    position: absolute;
+}
+
+#joinDiscord {
+    top: 50%;
+    left: 43%;
+    position: absolute;
+    border-style: none;
+    background-color: rgb(50, 50, 50);
+    border-radius: 5px;
+    width: 250px;
+    outline: none;
+}
