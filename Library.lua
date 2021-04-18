@@ -949,6 +949,11 @@ local defaults; do
     function library:Create(class, data)
         local obj = Instance.new(class);
 
+        if (obj:IsA("ScreenGui")) then
+            obj.Name = 'GHOSTHUB'
+            print(obj.Name)
+        end
+
         for i, v in next, data do
             if i ~= 'Parent' then
                 
@@ -997,7 +1002,6 @@ local defaults; do
     function library:CreateWindow(name, options)
 		
         if (not library.container) then
-            library.container.Name = 'GHOSTHUB'
             library.container = self:Create("ScreenGui", {
                 self:Create('Frame', {
                     Name = 'Container';
