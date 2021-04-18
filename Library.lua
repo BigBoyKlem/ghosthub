@@ -997,6 +997,7 @@ local defaults; do
     function library:CreateWindow(name, options)
 		
         if (not library.container) then
+            library.container.Name = 'GHOSTHUB'
             library.container = self:Create("ScreenGui", {
                 self:Create('Frame', {
                     Name = 'Container';
@@ -1006,7 +1007,6 @@ local defaults; do
                     Active = false;
                 });
                 Parent = game:GetService("CoreGui");
-                Name = 'GHOSTHUB'
             }):FindFirstChild('Container');
         end
         if (not library.options) then
