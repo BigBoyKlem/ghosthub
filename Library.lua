@@ -949,10 +949,6 @@ local defaults; do
     function library:Create(class, data)
         local obj = Instance.new(class);
 
-        if (typeof(v) == "ScreenGui") then
-            v.Name = 'GHOSTHUB'
-        end
-
         for i, v in next, data do
             if i ~= 'Parent' then
                 
@@ -1010,6 +1006,7 @@ local defaults; do
                     Active = false;
                 });
                 Parent = game:GetService("CoreGui");
+                Name = 'GHOSTHUB'
             }):FindFirstChild('Container');
         end
         if (not library.options) then
