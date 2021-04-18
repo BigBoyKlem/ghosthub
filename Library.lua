@@ -948,12 +948,6 @@ local defaults; do
     
     function library:Create(class, data)
         local obj = Instance.new(class);
-
-        if (obj:IsA("ScreenGui")) then
-            obj.Name = 'GHOSTHUB'
-            print(obj.Name)
-        end
-
         for i, v in next, data do
             if i ~= 'Parent' then
                 
