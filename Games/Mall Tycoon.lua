@@ -46,6 +46,14 @@ playerWindow:Toggle("Anti AFK", {flag = "antiAFKToggle"}, function(value)
     end
 end)
 
+playerWindow:Toggle("Infinite Jump", {flag = "antiAFKToggle"}, function(value)
+    game:GetService("UserInputService").JumpRequest:connect(function()
+        if (value) then
+            game:GetService"Players".LocalPlayer.Character:FindFirstChildOfClass'Humanoid':ChangeState("Jumping")
+        end
+    end)
+end)
+
 playerWindow:Bind("No Clip", {flag = "noClipBind", kbonly = true, default = Enum.KeyCode.E}, function()
     
     noClipToggled = not noClipToggled
