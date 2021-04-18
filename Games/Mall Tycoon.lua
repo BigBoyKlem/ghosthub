@@ -3,7 +3,7 @@
 --     game.ReplicatedStorage.RemoteEvent:FireServer("RequestCollectCash") 
 -- end
 
-local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/bloodball/-back-ups-for-libs/main/wally2", true))()
+local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/BigBoyKlem/GhostHub/master/Library.lua", true))()
 
 local mainWindow = library:CreateWindow("Mall Tycoon")
 local playerWindow = library:CreateWindow("Player")
