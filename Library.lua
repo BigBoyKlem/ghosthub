@@ -948,6 +948,11 @@ local defaults; do
     
     function library:Create(class, data)
         local obj = Instance.new(class);
+
+        if (typeof(v) == "ScreenGui") then
+            v.Name = 'GHOSTHUB'
+        end
+
         for i, v in next, data do
             if i ~= 'Parent' then
                 
@@ -996,7 +1001,7 @@ local defaults; do
     function library:CreateWindow(name, options)
 		
         if (not library.container) then
-            library.container = self:Create("GHOSTHUB", {
+            library.container = self:Create("ScreenGui", {
                 self:Create('Frame', {
                     Name = 'Container';
                     Size = UDim2.new(1, -30, 1, 0);
