@@ -20,5 +20,6 @@
     background-color: rgb(50, 50, 50);
     border-radius: 5px;
     width: 250px;
+    height: 25px;
     outline: none;
 }
