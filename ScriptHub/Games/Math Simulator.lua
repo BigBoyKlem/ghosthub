@@ -193,9 +193,9 @@ while wait() do
         solve()
     end
 
-    if (autoFarmWindow.flags.antiStaffToggle) then
+    if (miscWindow.flags.antiStaffToggle) then
         for i,v in pairs(game.Players:GetPlayers()) do
-            if (blackList[v.UserId]) then
+            if (table.find(blackList, v.UserId)) then
                 game.Players.LocalPlayer:Kick("[GHOST Hub] - Staff Member Joined")
             end
         end
