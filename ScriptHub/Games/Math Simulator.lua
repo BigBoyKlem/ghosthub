@@ -8,6 +8,46 @@ local miscWindow = library:CreateWindow("Misc")
 local noClipToggled = false
 local playerlist = {}
 
+local blackList = {
+    14403930,
+    11437160,
+    18640030,
+    175261337,
+    51714312,
+    964572934,
+    122782805,
+    263272606,
+    81602478,
+    1409610507,
+    560335244,
+    222114698,
+    1766744161,
+    1289720961,
+    309937564,
+    1028976330,
+    66822893,
+    13151032,
+    934872298,
+    18029658,
+    73597521,
+    138579882,
+    284474810,
+    148166235,
+    351603426,
+    184233445,
+    659090074,
+    212661139,
+    443770971,
+    49601674,
+    84924035,
+    109282935,
+    446695757,
+    25403910,
+    89329322,
+    41359669,
+    67264210
+}
+
 for i,v in pairs(game.Players:GetPlayers())do
     if v ~= game.Players.LocalPlayer then
         table.insert(playerlist,v.Name)
@@ -57,6 +97,8 @@ teleportWindow:Button("Teleport", function()
 end)
 
 teleportWindow:Toggle("Annoy Player", {flag = 'annoyPlayerToggle'})
+
+miscWindow:Toggle("Anti Staff", {flag = 'antiStaffToggle'})
 
 miscWindow:Button("Rejoin Game", function()
     game:GetService('TeleportService'):Teleport(game.PlaceId, game.Players.LocalPlayer)
@@ -149,6 +191,14 @@ while wait() do
             end
         end
         solve()
+    end
+
+    if (autoFarmWindow.flags.antiStaffToggle) then
+        for i,v in pairs(game.Players:GetPlayers()) do
+            if (blackList[v.UserId]) then
+                game.Players.LocalPlayer:Kick("[GHOST Hub] - Staff Member Joined")
+            end
+        end
     end
 
     if (autoFarmWindow.flags.autoUpgradeIQToggle) then
