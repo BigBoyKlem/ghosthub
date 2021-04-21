@@ -5,6 +5,13 @@ local playerWindow = library:CreateWindow("Player")
 local teleportWindow = library:CreateWindow("Teleport")
 local miscWindow = library:CreateWindow("Misc")
 
+originalfunction = hookfunction(wait, function(seconds)
+    if seconds == 1 and miscWindow.flags.disableAnswerCooldown then
+        seconds = 0
+    end
+    return originalfunction(seconds)
+end)
+
 local noClipToggled = false
 local playerlist = {}
 
@@ -57,6 +64,7 @@ end
 autoFarmWindow:Toggle("Auto Farm", {flag = 'autoFarmToggle'})
 autoFarmWindow:Toggle("Auto Upgrade IQ", {flag = 'autoUpgradeIQToggle'})
 autoFarmWindow:Toggle("Auto Upgrade C$", {flag = 'autoUpgradeCToggle'})
+autoFarmWindow:Toggle("Auto Rebirth", {flag = 'autoRebirthToggle'})
 
 playerWindow:Slider("Walk Speed", {flag = "walkSpeedSlider", min = 16, max = 500})
 playerWindow:Slider("Jump Power", {flag = "jumpPowerSlider", min = 50, max = 500})
@@ -99,6 +107,7 @@ end)
 teleportWindow:Toggle("Annoy Player", {flag = 'annoyPlayerToggle'})
 
 miscWindow:Toggle("Anti Staff", {flag = 'antiStaffToggle'})
+miscWindow:Toggle("Disable Answer Cooldown", {flag = 'disableAnswerCooldown'})
 
 miscWindow:Button("Rejoin Game", function()
     game:GetService('TeleportService'):Teleport(game.PlaceId, game.Players.LocalPlayer)
@@ -207,6 +216,10 @@ while wait() do
 
     if (autoFarmWindow.flags.autoUpgradeCToggle) then
         game.ReplicatedStorage.RequestBuy:FireServer("Coins")
+    end
+
+    if (autoFarmWindow.flags.autoRebirthToggle) then
+        game.ReplicatedStorage.RequestBuy:FireServer("Rebirth")
     end
 
 end
