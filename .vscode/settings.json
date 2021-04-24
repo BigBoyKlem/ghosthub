@@ -1,7 +1,12 @@
 {
     "Lua.diagnostics.globals": [
         "setclipboard",
-        "container"
+        "container",
+        "hookfunction",
+        "getconnections",
+        "getrawmetatable",
+        "setreadonly",
+        "getnamecallmethod"
     ],
     "Lua.diagnostics.disable": [
         "undefined-rbx-member",
