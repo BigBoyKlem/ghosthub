@@ -81,6 +81,8 @@ end)
 
 teleportWindow:Toggle("Annoy Player", {flag = 'annoyPlayerToggle'})
 
+miscWindow:Toggle("Remove Other Plots", {flag = 'removeOtherPlots'})
+
 miscWindow:Button("Rejoin Game", function()
     game:GetService('TeleportService'):Teleport(game.PlaceId, game.Players.LocalPlayer)
 end)
@@ -130,5 +132,11 @@ while wait() do
                 game:GetService"Players".LocalPlayer.Character:FindFirstChildOfClass'Humanoid':ChangeState("Jumping")
             end
         end)
+
+        for _,v in pairs(game.Workspace.Buildings:GetChildren()) do
+            if (v.Name ~= game.Players.LocalPlayer.Name and miscWindow.flags.remoteOtherPlots) then
+                v:Destroy()
+            end
+        end
     end)
 end
