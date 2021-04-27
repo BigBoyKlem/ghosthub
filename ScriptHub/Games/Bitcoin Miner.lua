@@ -134,7 +134,7 @@ while wait() do
         end)
 
         for _,v in pairs(game.Workspace.Buildings:GetChildren()) do
-            if (v.Name ~= game.Players.LocalPlayer.Name and miscWindow.flags.remoteOthersPlots) then
+            if (v.Name ~= game.Players.LocalPlayer.Name and miscWindow.flags.removeOthersPlots) then
                 v:Destroy()
             end
         end
