@@ -15,7 +15,16 @@ for i,v in pairs(game.Players:GetPlayers())do
 end
 
 autoFarmWindow:Toggle("Toggle Auto Farm", {flag = "autoFarmToggle"})
-autoFarmWindow:Toggle("Toggle Auto Sell", {flag = "autoSellToggle"})
+autoFarmWindow:Toggle("Toggle Auto Sell", {flag = "autoSellToggle"}, function(val)
+    spawn(
+        function()
+            while val do
+                game.ReplicatedStorage.Events.Shop.RequestSellAll:FireServer()
+                wait(1)
+            end
+        end
+    )
+end)
 
 playerWindow:Slider("Walk Speed", {flag = "walkSpeedSlider", min = 16, max = 500})
 playerWindow:Slider("Jump Power", {flag = "jumpPowerSlider", min = 50, max = 500})
@@ -84,22 +93,6 @@ end)
 while wait() do
     pcall(function()
 
-        -- Walk Speed / Jump Power
-        game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = playerWindow.flags.walkSpeedSlider
-        game.Players.LocalPlayer.Character.Humanoid.JumpPower = playerWindow.flags.jumpPowerSlider
-
-        -- FOV
-        game.Workspace.CurrentCamera.FieldOfView = playerWindow.flags.fovSlider
-
-        if (teleportWindow.flags.annoyPlayerToggle) then
-            if (game.Players[teleportWindow.flags.playerDropDown].Character ~= nil and game.Players.LocalPlayer.Character ~= nil) then
-                local playerPart = game.Players.LocalPlayer.Character.PrimaryPart
-                local targetPart = game.Players[teleportWindow.flags.playerDropDown].Character.PrimaryPart
-            
-                playerPart.CFrame = targetPart.CFrame
-            end
-        end
-
         if (autoFarmWindow.flags.autoFarmToggle) then
             for _,LootPlace in pairs(game.Workspace.Loot.Places:GetChildren()) do
                 if (LootPlace.LootType.Value == 'HighValueLoot') then
@@ -114,8 +107,20 @@ while wait() do
             end
         end
 
-        if (autoFarmWindow.flags.autoSellToggle) then
-            game.ReplicatedStorage.Events.Shop.RequestSellAll:FireServer() 
+        -- Walk Speed / Jump Power
+        game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = playerWindow.flags.walkSpeedSlider
+        game.Players.LocalPlayer.Character.Humanoid.JumpPower = playerWindow.flags.jumpPowerSlider
+
+        -- FOV
+        game.Workspace.CurrentCamera.FieldOfView = playerWindow.flags.fovSlider
+
+        if (teleportWindow.flags.annoyPlayerToggle) then
+            if (game.Players[teleportWindow.flags.playerDropDown].Character ~= nil and game.Players.LocalPlayer.Character ~= nil) then
+                local playerPart = game.Players.LocalPlayer.Character.PrimaryPart
+                local targetPart = game.Players[teleportWindow.flags.playerDropDown].Character.PrimaryPart
+                
+                playerPart.CFrame = targetPart.CFrame
+            end
         end
         
         game:GetService("UserInputService").JumpRequest:Connect(function()
