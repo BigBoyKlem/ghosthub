@@ -2,7 +2,7 @@ local gameList = loadstring(game:HttpGet('https://raw.githubusercontent.com/BigB
 local HashLib = loadstring(game:HttpGet('https://raw.githubusercontent.com/Egor-Skriptunoff/pure_lua_SHA/master/sha2.lua', true))()
 
 function checkWhitelist() 
-    local Response = syn.request({Url = "https://daunting-overcurren.000webhostapp.com/LoginCheck.php?key=" .. (_G.Key or ""), Method = "GET"})
+    local Response = syn.request({Url = 'https://daunting-overcurren.000webhostapp.com/LoginCheck.php?key=' .. (_G.Key or ''), Method = 'GET'})
 
     if (Response.Body == string.upper(HashLib.md5(_G.Key))) then
         return true
@@ -12,7 +12,7 @@ function checkWhitelist()
 end
 
 if (checkWhitelist()) then
-    if (not game:GetService('CoreGui'):FindFirstChild("GHOSTGUI")) then
+    if (not game:GetService('CoreGui'):FindFirstChild('GHOSTGUI')) then
         print('Loading...')
     
         if gameList[tostring(game.PlaceId)] then
