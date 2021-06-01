@@ -20,7 +20,7 @@ autoFarmWindow:Toggle("Toggle Auto Sell", {flag = "autoSellToggle"}, function(va
         function()
             while val do
                 game.ReplicatedStorage.Events.Shop.RequestSellAll:FireServer()
-                wait(1)
+                 wait(1)
             end
         end
     )
