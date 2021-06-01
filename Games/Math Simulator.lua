@@ -1,4 +1,4 @@
-local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/BigBoyKlem/GhostHub/master/ScriptHub/Library.lua", true))()
+local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/BigBoyKlem/GhostHub/master/Library.lua", true))()
 
 local autoFarmWindow = library:CreateWindow("Auto Farm")
 local playerWindow = library:CreateWindow("Player")
