@@ -1,7 +1,0 @@
-{
-    "Lua.diagnostics.disable": [
-        "undefined-global",
-        "missing-module-return",
-        "undefined-rbx-member"
-    ]
-}
