@@ -5,7 +5,7 @@ local HashLib = loadstring(game:HttpGet('https://raw.githubusercontent.com/Egor-
 function checkWhitelist() 
     local Response = syn.request({Url = 'http://ghosthub.xyz/LoginCheck.php?key=' .. (_G.Key or ''), Method = 'GET'})
 
-    if (Response.Body == string.upper(HashLib.md5(HashLib.md5(_G.Key)))) then
+    if (Response.Body == string.upper(HashLib.md5(_G.Key))) then
         return true
     else
         return false
