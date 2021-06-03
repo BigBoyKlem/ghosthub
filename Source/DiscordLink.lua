@@ -1,0 +1,1 @@
+return 'https://discord.gg/zpXwz2mF8b'
