@@ -1,8 +1,11 @@
 local gameList = loadstring(game:HttpGet('https://raw.githubusercontent.com/BigBoyKlem/GhostHub/master/GameList.lua',true))()
 local HashLib = loadstring(game:HttpGet('https://raw.githubusercontent.com/Egor-Skriptunoff/pure_lua_SHA/master/sha2.lua', true))()
 
-function checkWhitelist() 
-    local Response = syn.request({Url = 'http://ghosthub.xyz/LoginCheck.php?key=' .. (_G.Key or ''), Method = 'GET'})
+function checkWhitelist()
+
+    local request = request or http_request or (http and http.request) or syn.request
+
+    local Response = request({Url = 'http://ghosthub.xyz/LoginCheck.php?key=' .. (_G.Key or ''), Method = 'GET'})
 
     if (Response.Body == string.upper(HashLib.md5(HashLib.md5(_G.Key)))) then
         return true
