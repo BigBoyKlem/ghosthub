@@ -5,7 +5,7 @@ function checkWhitelist()
 
     local request = request or http_request or (http and http.request) or syn.request
 
-    local Response = request({Url = 'http://ghosthub.xyz/LoginCheck.php?key=' .. (_G.Key or ''), Method = 'GET'})
+    local Response = request({Url = 'https://daunting-overcurren.000webhostapp.com/LoginCheck.php?key=' .. (_G.Key or ''), Method = 'GET'})
 
     if (Response.Body == string.upper(HashLib.md5(HashLib.md5(_G.Key)))) then
         return true
